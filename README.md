@@ -23,20 +23,17 @@ wazuh/rules/laurel_rules.xml    # Wazuh alerting rules for LAUREL events
 
 ### Agent side (monitored host)
 
-1. Install auditd and deploy the rules:
+0. If not yet installed, install auditd and clone this repository.
+
+1. Deploy the rules:
    ```
-   cp auditd/ubuntu/audit.rules /etc/audit/rules.d/audit.rules
+   sudo cp auditd/ubuntu/audit.rules /etc/audit/rules.d/audit.rules
    systemctl restart auditd
    ```
 
 2. Install LAUREL:
    ```
    sudo bash laurel/install-laurel.sh
-   ```
-
-3. Restart the Wazuh agent:
-   ```
-   systemctl restart wazuh-agent
    ```
 
 ### Manager side
@@ -46,6 +43,7 @@ wazuh/rules/laurel_rules.xml    # Wazuh alerting rules for LAUREL events
    cp wazuh/decoders/laurel_decoder.xml /var/ossec/etc/decoders/
    cp wazuh/rules/laurel_rules.xml /var/ossec/etc/rules/
    ```
+   Or add the decoder and rules via the Dashboard.
 
 2. Restart the Wazuh manager:
    ```
