@@ -70,7 +70,7 @@ It triggers each audit rule category and checks that auditd recorded the expecte
 
 ## What the rules cover
 
-The auditd ruleset and Wazuh rules cover: command execution, privilege escalation, service/cron/kernel module changes, credential file access, SSH/PAM/sudoers modifications, SSL key access, network and firewall changes, time manipulation, DAC permission changes, data exfiltration indicators, reconnaissance tools, and Wazuh agent integrity monitoring.
+The auditd ruleset and Wazuh rules cover: interactive command logging (all commands executed from a terminal session), privilege escalation, service/cron/kernel module changes, credential file access, SSH/PAM/sudoers modifications, SSL key access, network and firewall changes, time manipulation, DAC permission changes, data exfiltration indicators, reconnaissance tools, and Wazuh agent integrity monitoring.
 
 MITRE ATT&CK technique IDs are mapped in the Wazuh rules where applicable.
 

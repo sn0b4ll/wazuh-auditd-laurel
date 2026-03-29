@@ -226,6 +226,14 @@ section "Command execution"
 if [[ -n "$NON_ROOT_USER" ]]; then
     run_as_user "$NON_ROOT_USER" "id > /dev/null"
     check_key "exec" "execve by non-root user ($NON_ROOT_USER)"
+
+    # Interactive command logging: same exec event but from a TTY session.
+    # The run_as_user call above uses runuser -l which allocates a login
+    # session with a TTY, so the event has tty != "(none)".
+    # The Wazuh rule 100122 matches on this -- here we verify the auditd
+    # event was recorded (same key, the Wazuh-level TTY filter is not
+    # testable from ausearch).
+    note "Interactive command logging (Wazuh rule 100122) uses the same auditd key 'exec' with TTY filter"
 else
     skip "exec -- no non-root user found (rule needs auid >= 1000)"
 fi
